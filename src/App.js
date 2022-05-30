@@ -24,10 +24,16 @@ function App() {
     for (const key in localStorage) {
         if (Object.hasOwnProperty.call(localStorage, key) && key.includes('query-')) {
             const query = localStorage[key];
-            tempArr.push(JSON.parse(query))
+            tempArr.push({... JSON.parse(query), key})
         }
     }
     setsavedQueries([... tempArr])
+  }
+
+  const deleteQuery = (index) => {
+    localStorage.removeItem(savedQueries[index].key)
+    alert('Query Successfully Deleted!')
+    getSavedQueries()
   }
 
   useEffect(() => {
@@ -39,7 +45,7 @@ function App() {
     <>
       <NavBar addExtraClass={addExtraClass}/>
       <TypingSection getSavedQueries={getSavedQueries} queryToView={queryData.queryToView} commandToDisplay={queryData.command}/>
-      <SavedQueries viewQuery={viewQuery} extraClass={extraClass} savedQueries={savedQueries}/>
+      <SavedQueries deleteQuery={deleteQuery} viewQuery={viewQuery} extraClass={extraClass} savedQueries={savedQueries}/>
     </>
   )
 }

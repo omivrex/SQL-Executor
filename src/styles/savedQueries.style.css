@@ -27,11 +27,18 @@ li {
     cursor: pointer;
     padding: 0.3rem;
     width: 90%;
+    display: flex;
     margin: 0.7rem 0;
     background-color: #9c27b0;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-li:hover {
+li>span:nth-child(2) {
+    cursor: pointer;
+}
+
+li>span:hover {
     color: #fcc81b;
 }
 
