@@ -6,9 +6,14 @@ const TypingSection = () => {
     const resultSection = useRef()
 
     const [tableData, settableData] = useState([]) //this is a 2D array
+    useEffect(() => {
+        (() => {
+            extractData(queryResults[0])
+        })()
+    }, [])
 
     function extractData(csvText) {
-        var rowData = csvText.split(/\r\n|\n/);
+        const rowData = csvText.split(/\r\n|\n/);
         const tempArr = []
         rowData.forEach(element => {
             tempArr.push(element.split(','))
@@ -17,11 +22,6 @@ const TypingSection = () => {
         resultSection.current.scrollIntoView()
     }
 
-    useEffect(() => {
-        (() => {
-            extractData(queryResults[0])
-        })()
-    }, [])
 
     const generateResult = () => {
       if (commandSection.current.value.length) {
