@@ -1,16 +1,19 @@
 import {useRef, useEffect, useState} from 'react'
 import styles from "../styles/TypingSection.styles.css"
 import { queryResults } from '../results';
-const TypingSection = ({getSavedQueries}) => {
+
+const TypingSection = ({getSavedQueries, queryToView, commandToDisplay}) => {
     const commandSection = useRef()
     const resultSection = useRef()
-    const currentResultDisplayedIndex = useRef(0)
-    const [tableData, settableData] = useState([]) //this is a 2D array
+    const currentResultDisplayedIndex = useRef(queryToView)
+    const [tableData, settableData] = useState([]) //this will be a 2D array
+    console.log(queryToView, commandToDisplay, currentResultDisplayedIndex)
+    
     useEffect(() => {
         (() => {
-            extractData(queryResults[0])
+            extractData(queryResults[queryToView])
         })()
-    }, [])
+    }, [queryToView])
 
     function extractData(csvText) {
         const rowData = csvText.split(/\r\n|\n/);
@@ -21,7 +24,6 @@ const TypingSection = ({getSavedQueries}) => {
         settableData([... tempArr])
         resultSection.current.scrollIntoView()
     }
-
 
     const generateResult = () => {
       if (commandSection.current.value.length) {
@@ -50,7 +52,7 @@ const TypingSection = ({getSavedQueries}) => {
             <div id="container">
                 <div id="textPanelContainer">
                     <span style ={{color:'#eee'}}>Commands:</span>
-                    <textarea ref={commandSection} id="commandSection"/>
+                    <textarea value={commandToDisplay} ref={commandSection} id="commandSection"/>
 
                     <div id="typingButnWrapper">
                         <div>

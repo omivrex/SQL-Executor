@@ -7,10 +7,16 @@ import TypingSection from './components/TypingSection.component'
 function App() {
   const [extraClass, setextraClass] = useState('')
   const [savedQueries, setsavedQueries] = useState([])
+  const [queryData, setqueryData] = useState({queryToView: 0, command: ''})
+  
 
   const addExtraClass = () => {
     extraClass=== 'slideInRight'?setextraClass('slideOutRight'):
     setextraClass('slideInRight')
+  }
+
+  const viewQuery = (index, command) => {
+    setqueryData({queryToView: index, command: command})
   }
 
   const getSavedQueries = () => {
@@ -32,8 +38,8 @@ function App() {
   return (
     <>
       <NavBar addExtraClass={addExtraClass}/>
-      <TypingSection getSavedQueries={getSavedQueries}/>
-      <SavedQueries extraClass={extraClass} savedQueries={savedQueries}/>
+      <TypingSection getSavedQueries={getSavedQueries} queryToView={queryData.queryToView} commandToDisplay={queryData.command}/>
+      <SavedQueries viewQuery={viewQuery} extraClass={extraClass} savedQueries={savedQueries}/>
     </>
   )
 }
