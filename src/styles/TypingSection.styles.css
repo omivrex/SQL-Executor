@@ -67,24 +67,31 @@
   flex: 1;
 }
 
-.textPanel {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+#commandSection, #resultSection {
   margin: 0.5rem auto;
   overflow-y: auto;
   background-color: #52055f;
-  height: 15rem;
-}
-
-#commandSection, #resultSection {
   flex: 1 1;
-  background-color: inherit;
   color: #eee !important;
   overflow-wrap: anywhere;
   padding: 10px;
-  width: 100%;
+  width: 99%;
+  min-height: 15%;
   resize: none;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  max-width: 23rem;
+  min-width: 5rem;
+  margin: auto;
+  border-right: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+  text-align: center;
+  padding: 0 0.7rem;
 }
 
 #saveButn,
