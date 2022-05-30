@@ -162,16 +162,25 @@ const TypingSection = ({path, data, docId, closeEditBox, showLoadingComponent}) 
                 </div> */}
 
                 <div id="textPanelContainer">
-                    <span style ={{color:'#eee'}}>Command:</span>
+                    <span style ={{color:'#eee'}}>Commands:</span>
                     <div className="textPanel" onFocus={()=>activeSection.current = questionSection.current}>
-                        <textarea ref={questionSection} className="typingSection" id="questionTypingSection"/>
+                        <textarea ref={questionSection} id="commandSection"/>
                     </div>
 
                     <span style ={{color:'#eee'}}>Result:</span>
                     <div className="textPanel" onFocus={()=>activeSection.current = answerSection.current}>
-                        <div ref={answerSection} className="typingSection" id="answerTypingSection"></div>
+                        <div ref={answerSection} id="resultSection"></div>
                     </div>
-
+                    <div id="typingButnWrapper">
+                        <div>
+                            <div id="runButn">
+                                <button type="submit">RUN</button>
+                            </div>
+                            <div id="saveButn">
+                                <button type="submit">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
