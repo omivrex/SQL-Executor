@@ -1,5 +1,4 @@
-import react from "react";
-import pageStyles from "../styles/NavBar.styles.css"
+import styles from "../styles/NavBar.styles.css"
 
 const NavBar = () => {
   return (

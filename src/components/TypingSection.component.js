@@ -1,5 +1,5 @@
 import {useRef, useEffect, useState} from 'react'
-import componentStyles from "../styles/TypingSection.styles.css"
+import styles from "../styles/TypingSection.styles.css"
 import { queryResults } from '../results';
 const TypingSection = () => {
     const commandSection = useRef()
