@@ -3,9 +3,7 @@ import componentStyles from "../styles/TypingSection.styles.css"
 import addImageIcon from "../assets/addImageIcon.png"
 import { sendSaveQuestionReq, sendDeleteQuestionReq } from '../utils/pastQuestions.util';
 
-const VanillaCaret = require('vanilla-caret-js');
-
-const TypingSection = ({path, data, docId, closeEditBox, showLoadingComponent}) => {
+const TypingSection = () => {
     const questionSection = useRef()
     const answerSection = useRef()
     const activeSection = useRef(questionSection.current)
@@ -13,6 +11,18 @@ const TypingSection = ({path, data, docId, closeEditBox, showLoadingComponent}) 
     const bold = useRef(false)
     const underline = useRef(false)
     const italic = useRef(false)
+
+    const [tableData, settableData] = useState([]) //this is a 2D array
+
+    function extractData(csvText) {
+        var rowData = csvText.split(/\r\n|\n/);
+        const tempArr = []
+        while (rowData.length) {
+            tempArr.push(rowData.shift().split(','));
+        }
+        settableData([... tempArr])
+    }
+    
 
     // useEffect(() => {
     //     (() => {
@@ -36,22 +46,22 @@ const TypingSection = ({path, data, docId, closeEditBox, showLoadingComponent}) 
     //     })()
     // }, [])
     
-    const formatText = (ref, command, tag)=>{
-        const activeSectionId = activeSection.current.id
-        const lastDivWithImg = document.querySelector(`#${activeSectionId}>.divWithImage:last-of-type`)
-        activeSection.current.focus();
-        if (ref.current === true) {
-            document.getElementById(command).style.boxShadow = '0 0 4px 0 #323131'
-            document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).parentElement.innerHTML += `<span>&nbsp;</span>`
-            new VanillaCaret(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).parentElement).setPos(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).parentElement.innerText.length)
-        } else {
-            lastDivWithImg?lastDivWithImg.innerHTML += `<${tag} class="${tag}_text">&nbsp;</${tag}>`
-            :activeSection.current.innerHTML += `<${tag} class="${tag}_text">&nbsp;</${tag}>`
-            document.getElementById(command).style.boxShadow = 'none'
-            lastDivWithImg? new VanillaCaret(lastDivWithImg.lastElementChild).setPos(lastDivWithImg.lastElementChild.innerText.length): new VanillaCaret(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`)).setPos(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).innerText.length)
-        }
-        ref.current = !ref.current
-    }
+    // const formatText = (ref, command, tag)=>{
+    //     const activeSectionId = activeSection.current.id
+    //     const lastDivWithImg = document.querySelector(`#${activeSectionId}>.divWithImage:last-of-type`)
+    //     activeSection.current.focus();
+    //     if (ref.current === true) {
+    //         document.getElementById(command).style.boxShadow = '0 0 4px 0 #323131'
+    //         document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).parentElement.innerHTML += `<span>&nbsp;</span>`
+    //         new VanillaCaret(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).parentElement).setPos(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).parentElement.innerText.length)
+    //     } else {
+    //         lastDivWithImg?lastDivWithImg.innerHTML += `<${tag} class="${tag}_text">&nbsp;</${tag}>`
+    //         :activeSection.current.innerHTML += `<${tag} class="${tag}_text">&nbsp;</${tag}>`
+    //         document.getElementById(command).style.boxShadow = 'none'
+    //         lastDivWithImg? new VanillaCaret(lastDivWithImg.lastElementChild).setPos(lastDivWithImg.lastElementChild.innerText.length): new VanillaCaret(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`)).setPos(document.querySelector(`#${activeSectionId}>.${tag}_text:last-of-type`).innerText.length)
+    //     }
+    //     ref.current = !ref.current
+    // }
 
     // const saveQuestion = () => {
     //     if (courseName.current !== '' && year.current !== '' && subject.current !== '' && questionNumber.current !== '') {
@@ -169,7 +179,17 @@ const TypingSection = ({path, data, docId, closeEditBox, showLoadingComponent}) 
 
                     <span style ={{color:'#eee'}}>Result:</span>
                     <div className="textPanel" onFocus={()=>activeSection.current = answerSection.current}>
-                        <div ref={answerSection} id="resultSection"></div>
+                        <div ref={answerSection} id="resultSection">
+                            <table>
+                                {tableData.forEach(row => {
+                                    <tr>
+                                        {row.forEach(cell => {
+                                            <td>{cell}</td>
+                                        })}
+                                    </tr>
+                                })}
+                            </table>
+                        </div>
                     </div>
                     <div id="typingButnWrapper">
                         <div>
