@@ -7,10 +7,10 @@ const TypingSection = ({getSavedQueries, queryToView, commandToDisplay}) => {
     const resultSection = useRef()
     const currentResultDisplayedIndex = useRef(queryToView)
     const [tableData, settableData] = useState([]) //this will be a 2D array
-    console.log(queryToView, commandToDisplay, currentResultDisplayedIndex)
     
     useEffect(() => {
         (() => {
+            commandSection.current.value = commandToDisplay
             extractData(queryResults[queryToView])
         })()
     }, [queryToView])
@@ -38,7 +38,7 @@ const TypingSection = ({getSavedQueries, queryToView, commandToDisplay}) => {
 
     const saveQuery = () => {
         if (commandSection.current.value.length) {
-            const command = commandSection.current.value
+            const command = commandSection.current.innerHTML
             localStorage.setItem(`query-${new Date().getTime()}`, JSON.stringify({command, result: currentResultDisplayedIndex.current }))
             alert('Successfully Saved Query To Local Storage')
             getSavedQueries()
@@ -52,7 +52,7 @@ const TypingSection = ({getSavedQueries, queryToView, commandToDisplay}) => {
             <div id="container">
                 <div id="textPanelContainer">
                     <span style ={{color:'#eee'}}>Commands:</span>
-                    <textarea value={commandToDisplay} ref={commandSection} id="commandSection"/>
+                    <textarea ref={commandSection} id="commandSection"></textarea>
 
                     <div id="typingButnWrapper">
                         <div>

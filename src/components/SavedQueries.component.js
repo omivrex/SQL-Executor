@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import styles from "../styles/savedQueries.style.css"
 const SavedQueries = ({extraClass, savedQueries, viewQuery, deleteQuery}) => {
     

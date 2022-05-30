@@ -1,6 +1,6 @@
 /** 
  * NOTE: This contains CSV data stored in an array in the
- * from of texts which willbe displayed at random whenever a querry is run.
+ * from of strings which will be displayed at random whenever a querry is run.
  */
 
 export const queryResults = [
