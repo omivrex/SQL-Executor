@@ -1,7 +1,7 @@
 import {useRef, useEffect, useState} from 'react'
 import styles from "../styles/TypingSection.styles.css"
 import { queryResults } from '../results';
-const TypingSection = () => {
+const TypingSection = ({getSavedQueries}) => {
     const commandSection = useRef()
     const resultSection = useRef()
     const currentResultDisplayedIndex = useRef(0)
@@ -25,7 +25,7 @@ const TypingSection = () => {
 
     const generateResult = () => {
       if (commandSection.current.value.length) {
-        const resultToDisplay = Math.round(Math.random()*queryResults.length)
+        const resultToDisplay = Math.round(Math.random()*queryResults.length-1)
         const randomResult = queryResults[resultToDisplay]
         currentResultDisplayedIndex.current = resultToDisplay
         extractData(randomResult)
@@ -39,6 +39,7 @@ const TypingSection = () => {
             const command = commandSection.current.value
             localStorage.setItem(`query-${new Date().getTime()}`, JSON.stringify({command, result: currentResultDisplayedIndex.current }))
             alert('Successfully Saved Query To Local Storage')
+            getSavedQueries()
         } else {
             alert('Comand Section Is Empty!!')
         }

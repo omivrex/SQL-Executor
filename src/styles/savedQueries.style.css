@@ -10,7 +10,7 @@
 }
 
 #savedQryBox>h3 {
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     border-bottom: 2px solid #eee;
     padding: 0.7rem;
@@ -35,34 +35,38 @@ li:hover {
     color: #fcc81b;
 }
 
-@keyframes slideInLeft {
+@keyframes slideInRight {
     from {
-        transform: translate3d(-100%, 0, 0);
+        display: none;
+        transform: translate3d(100%, 0, 0);
         visibility: visible;
     }
 
     to {
+        display: block;
         transform: translate3d(0, 0, 0);
     }
 }
-  
-.slideInLeft {
-    animation-name: slideInLeft;
+
+.slideInRight {
+    animation: slideInRight 0.7s ease forwards;
 }
 
 @keyframes slideOutRight {
     from {
+      display: block;
       transform: translate3d(0, 0, 0);
     }
   
     to {
       visibility: hidden;
+      display: none;
       transform: translate3d(100%, 0, 0);
     }
   }
   
   .slideOutRight {
-    animation-name: slideOutRight;
+    animation: slideOutRight 0.7s ease forwards;
   }
   
   
