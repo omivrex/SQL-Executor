@@ -4,7 +4,7 @@ import { queryResults } from '../results';
 const TypingSection = () => {
     const commandSection = useRef()
     const resultSection = useRef()
-
+    const currentResultDisplayedIndex = useRef(0)
     const [tableData, settableData] = useState([]) //this is a 2D array
     useEffect(() => {
         (() => {
@@ -25,11 +25,23 @@ const TypingSection = () => {
 
     const generateResult = () => {
       if (commandSection.current.value.length) {
-        const randomResult = queryResults[Math.round(Math.random()*queryResults.length)]
+        const resultToDisplay = Math.round(Math.random()*queryResults.length)
+        const randomResult = queryResults[resultToDisplay]
+        currentResultDisplayedIndex.current = resultToDisplay
         extractData(randomResult)
       } else {
         alert('Comand Section Is Empty!!')
       }
+    }
+
+    const saveQuery = () => {
+        if (commandSection.current.value.length) {
+            const command = commandSection.current.value
+            localStorage.setItem(`query-${new Date().getTime()}`, JSON.stringify({command, result: currentResultDisplayedIndex.current }))
+            alert('Successfully Saved Query To Local Storage')
+        } else {
+            alert('Comand Section Is Empty!!')
+        }
     }
     
     return (
@@ -45,7 +57,7 @@ const TypingSection = () => {
                                 <button type="submit" onClick={generateResult}>RUN</button>
                             </div>
                             <div id="saveButn">
-                                <button type="submit">SAVE</button>
+                                <button type="submit" onClick={saveQuery}>SAVE</button>
                             </div>
                         </div>
                     </div>
