@@ -10,7 +10,7 @@
   justify-content: space-between;
   box-shadow: rgb(255 136 0) 0px 0px 4px 1px;
   top: 9.2vh;
-  z-index: 4;
+  /* z-index: 4; */
   overflow-y: auto;
 }
 
