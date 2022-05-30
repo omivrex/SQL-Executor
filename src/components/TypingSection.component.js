@@ -3,6 +3,7 @@ import componentStyles from "../styles/TypingSection.styles.css"
 import { queryResults } from '../results';
 const TypingSection = () => {
     const commandSection = useRef()
+    const resultSection = useRef()
 
     const [tableData, settableData] = useState([]) //this is a 2D array
 
@@ -13,6 +14,7 @@ const TypingSection = () => {
             tempArr.push(element.split(','))
         });
         settableData([... tempArr])
+        resultSection.current.scrollIntoView()
     }
 
     useEffect(() => {
@@ -20,6 +22,15 @@ const TypingSection = () => {
             extractData(queryResults[0])
         })()
     }, [])
+
+    const generateResult = () => {
+      if (commandSection.current.value.length) {
+        const randomResult = queryResults[Math.round(Math.random()*queryResults.length)]
+        extractData(randomResult)
+      } else {
+        alert('Comand Section Is Empty!!')
+      }
+    }
     
     return (
         <>
@@ -31,7 +42,7 @@ const TypingSection = () => {
                     <div id="typingButnWrapper">
                         <div>
                             <div id="runButn">
-                                <button type="submit">RUN</button>
+                                <button type="submit" onClick={generateResult}>RUN</button>
                             </div>
                             <div id="saveButn">
                                 <button type="submit">SAVE</button>
@@ -40,7 +51,7 @@ const TypingSection = () => {
                     </div>
 
                     <span style ={{color:'#eee'}}>Result:</span>
-                    <div id="resultSection">
+                    <div ref={resultSection} id="resultSection">
                         <table>
                             <tbody>
                                 {tableData.map((row, rowIndex) => {
