@@ -1,0 +1,184 @@
+#section {
+  position: fixed;
+  background: #510a5e;
+  width: 95vw;
+  height: 32rem;
+  margin: auto;
+  display: flex;
+  z-index: 2;
+  top: 4rem;
+  border: 1px dotted #eee;
+}
+
+#header {
+  background-color: #510a5e;
+  color: #eee;
+  padding: 0.95rem 1rem;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+#headNameCont {
+  position: relative;
+  background: #9c27b0;
+  flex: 1;
+  height: 100%;
+  align-self: flex-start;
+  left: 0%;
+  margin: 0;
+  border: 1px solid rgb(36, 36, 36);
+}
+
+#headNameCont > span {
+  display: flex;
+  color: #eee;
+  position: relative;
+  padding: 0.95rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+#headNameCont > span:hover {
+  color: #ff8800;
+}
+
+#headlineContainer {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border: 1px dotted #eee;
+}
+
+#headlineContainer > div:nth-child(1) {
+  color: #eee;
+  font-size: 1.4em;
+  padding: 0.75rem 1rem;
+}
+
+#headlines {
+  position: relative;
+  display: block;
+  width: inherit;
+  flex: 8.4;
+  overflow-y: auto;
+  border-top: 1px solid #eee;
+}
+
+.headline {
+  color: #eee;
+  padding: 1rem;
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
+
+#postList > li {
+  color: #eee;
+  list-style: none;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  display: block;
+  padding: 11px 0 11px 0;
+  cursor: pointer;
+}
+
+#postList > li:hover {
+  color: #ff8800;
+}
+
+#postSecMenu {
+  width: 25%;
+  height: 100%;
+  align-self: flex-start;
+  border: 1px dotted #eee;
+}
+
+#postSecMenu > span:nth-child(1) {
+  color: #eee;
+  list-style: none;
+  font-family: sans-serif;
+  font-size: 2em;
+  text-align: left;
+  width: inherit;
+  padding: 0.5rem;
+}
+
+.addButn {
+  color: #eee;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-align: center;
+}
+
+#post {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  margin: auto;
+  width: 90vw;
+  top: 6.1rem;
+  height: 68.2vh;
+  z-index: 5;
+  background: #510a5e;
+  box-shadow: 0 0 8px 0 #ff8800;
+  padding: 0.5rem;
+}
+
+#topic {
+  color: #eee;
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: inline-block;
+  width: 89%;
+  margin: 1rem;
+  font-size: 1.1rem;
+  padding: 5px;
+  background: inherit;
+  text-align: center;
+  flex: 0.1;
+}
+
+#postBody {
+  margin: auto;
+  width: 96%;
+  background: inherit;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #eee;
+  flex: 3;
+  resize: none;
+}
+
+#butnContainer {
+  flex: 0.2;
+  display: flex;
+  align-content: space-around;
+}
+
+#butnContainer > button {
+  border: none;
+  color: #eee;
+  background: #ff8800;
+  padding: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  margin: auto 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.newsSectionCloseButn {
+  color: rgb(238, 238, 238) !important;
+  position: absolute;
+  align-self: flex-start;
+  top: 0;
+  float: right;
+  /* left: 80%; */
+  display: block;
+  margin: auto 0 auto 82.9vw;
+}

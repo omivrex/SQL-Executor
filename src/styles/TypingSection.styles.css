@@ -1,0 +1,307 @@
+#container {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  width: 82vw;
+  height: 87.7vh;
+  position: fixed;
+  padding: 1rem;
+  background: #9c27b0;
+  justify-content: space-between;
+  box-shadow: rgb(255 136 0) 0px 0px 4px 1px;
+  top: 3.2vh;
+  z-index: 4;
+  overflow-y: auto;
+  /* min-height: 17rem; */
+}
+
+#controlls {
+  flex: 0.3;
+  width: 100%;
+  display: flex;
+  margin: 0.5rem auto;
+  background-color: #eee;
+  flex-direction: column;
+}
+
+#controlls > div {
+  width: 100%;
+  border-top: 1px solid #9c27b0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 0.5rem 0rem;
+}
+
+.insertedImages {
+  background-color: inherit;
+  max-width: 180px;
+  margin: auto;
+  position: relative;
+  display: block;
+}
+
+#questionAndAnswerDetails {
+  flex: 1 1;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center !important;
+}
+
+#container > span {
+  color: #eee;
+}
+
+#container > span#heading {
+  text-align: center;
+  background: #52055f;
+  padding: 0.5rem;
+}
+
+div#questionAndAnswerDetails > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.details {
+  padding: 3px;
+  text-align: center;
+  margin: 3px auto;
+  align-self: flex-start;
+  position: relative;
+  display: block;
+  border: none;
+}
+
+.details > label {
+  margin: 9px;
+}
+
+#textformatArea {
+  flex: 0.8;
+}
+
+#textformatArea > span {
+  background: #c7c7c7;
+  margin: auto 0;
+  display: inline-block;
+  position: relative;
+  width: 2rem;
+  height: 23px;
+  text-align: center;
+  border: 1px solid #eee;
+  padding: 2px;
+  cursor: pointer;
+  color: #343434;
+  box-shadow: 0 0 4px 0 #323131;
+}
+
+#imageInsertButn > img {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  margin: auto;
+}
+
+#textPanelContainer {
+  flex: 1;
+}
+
+.textPanel {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0.5rem auto;
+  overflow-y: auto;
+  background-color: #52055f;
+  height: 15rem;
+}
+
+.typingSection {
+  flex: 1 1;
+  background-color: inherit;
+  color: #eee !important;
+  overflow-wrap: anywhere;
+  padding: 10px;
+  width: 100%;
+}
+
+.typeSectionCloseButn {
+  color: #eee;
+}
+
+#saveButn,
+#deleteButn {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.3rem;
+}
+
+#saveButn > button,
+#deleteButn > button {
+  background-color: #ffa000;
+  border: none;
+  color: #eee;
+  padding: 0.5rem 1.3rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+#typingSection {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  position: fixed;
+  background: #9c27b0;
+  width: 82vw;
+  height: 87.7vh;
+  margin: auto;
+  z-index: 0;
+  top: 1rem;
+  z-index: 3;
+  border: 1px dotted #eee;
+}
+
+#pathContainer {
+  width: 100%;
+  flex: 0.1;
+  position: relative;
+  justify-content: center;
+}
+
+#path {
+  display: flex;
+  flex-direction: row;
+  color: #eee;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+#path > div {
+  margin: auto;
+  /* height: 65%; */
+  padding: 0.31rem;
+}
+
+#pathValue {
+  background: #510a5e;
+  width: 90%;
+  border: 5px solid #9c27b0;
+}
+
+#folderDisplayPannel {
+  display: flex;
+  width: 100%;
+  flex: 1 1;
+  background-color: #52055f;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  overflow: auto;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #eee;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: 0 5px;
+  align-items: center;
+}
+
+.folder > img:hover {
+  box-shadow: 0 0 10px 0 #ffa000;
+}
+
+.folder > img {
+  width: 60px;
+}
+
+#loading {
+  position: absolute;
+  color: #eee;
+  background-color: rgb(156 39 176 / 30%);
+  width: 82vw;
+  height: 87.7vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+}
+
+#loading > span {
+  font-size: 1.8em;
+}
+
+#addButn,
+#backButn,
+#deleteButn {
+  justify-self: flex-end;
+  color: #eee;
+  font-size: 2.5rem;
+  cursor: pointer;
+  position: sticky;
+  display: block;
+  left: 96%;
+  height: fit-content;
+}
+
+#addButn {
+  top: 3rem;
+}
+
+#backButn > img {
+  width: 28px;
+}
+
+#deleteButn {
+  top: 6rem;
+}
+
+#deleteButn > img {
+  width: 1.7rem;
+}
+
+#correctOptionAndButnWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#correctOption {
+  width: 7.9rem;
+  height: 3.6rem;
+  background: #52055f;
+  display: flex;
+  flex-direction: column;
+}
+
+#correctOption > span {
+  color: rgb(238, 238, 238);
+  background: #9c27b0;
+  text-align: center;
+  width: 100%;
+}
+
+#correctOption > input {
+  height: inherit;
+  width: inherit;
+  background: inherit;
+  border: none;
+  color: #eee;
+  text-align: center;
+}
