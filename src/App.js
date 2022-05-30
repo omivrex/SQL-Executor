@@ -4,7 +4,7 @@ import NavBar from './components/Navbar.component'
 import SavedQueries from './components/SavedQueries.component'
 import TypingSection from './components/TypingSection.component'
 
-const defaultQuerries = [
+const defaultQueries = [
   {
     command: 'SELECT * FROM cartegories;',
     result: 0
@@ -44,7 +44,7 @@ function App() {
             tempArr.push({... JSON.parse(query), key})
         }
     }
-    setsavedQueries([... defaultQuerries, ... tempArr])
+    setsavedQueries([... defaultQueries, ... tempArr])
   }
 
   const deleteQuery = (index) => {
