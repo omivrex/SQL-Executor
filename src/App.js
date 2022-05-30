@@ -4,6 +4,23 @@ import NavBar from './components/Navbar.component'
 import SavedQueries from './components/SavedQueries.component'
 import TypingSection from './components/TypingSection.component'
 
+const defaultQuerries = [
+  {
+    command: 'SELECT * FROM cartegories;',
+    result: 0
+  },
+  {
+    command: 'SELECT CustomerName, City FROM Customers;',
+    result: 1
+  },
+
+  {
+    command: `SELECT * FROM Customers
+    ORDER BY Country;`,
+    result: 3
+  },
+]
+
 function App() {
   const [extraClass, setextraClass] = useState('')
   const [savedQueries, setsavedQueries] = useState([])
@@ -27,13 +44,18 @@ function App() {
             tempArr.push({... JSON.parse(query), key})
         }
     }
-    setsavedQueries([... tempArr])
+    setsavedQueries([... defaultQuerries, ... tempArr])
   }
 
   const deleteQuery = (index) => {
-    localStorage.removeItem(savedQueries[index].key)
-    alert('Query Successfully Deleted!')
-    getSavedQueries()
+    const queryKey = savedQueries[index].key
+    if (queryKey) {
+      localStorage.removeItem(queryKey)
+      alert('Query Successfully Deleted!')
+      getSavedQueries()
+    } else {
+      alert(`This is a default query, it can't be deleted `)
+    }
   }
 
   useEffect(() => {
