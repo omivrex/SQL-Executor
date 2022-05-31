@@ -15,5 +15,5 @@ TECHNOLOGIES USED:
 
 PERFORMANCE DETAILS:
 - Page load time: 5.52s
-  Speed was calculated using the Network tool in chrome dev console, under a Throttling of slow 3G and a hard refresh of the hosted version, this was done to test the worse case scenario for the app.
+  Speed was calculated using the Network tool in chrome dev console, under a Throttling of slow 3G and a hard refresh of the hosted version, this was done to test the worse case scenario for the app. Without throttling the page took 2.02s to load
   No optimization was done.
